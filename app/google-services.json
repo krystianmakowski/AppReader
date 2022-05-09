@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "924199239125",
+    "project_id": "jetareader-aa20d",
+    "storage_bucket": "jetareader-aa20d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924199239125:android:280f9504a427bcef56d15c",
+        "android_client_info": {
+          "package_name": "com.makowski.appreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924199239125-nb1jd18r91kqhka42rgjafnf6975760i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0fPQNsLVxhjfubTGTSzgZEVjXYwp7Duw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924199239125-nb1jd18r91kqhka42rgjafnf6975760i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
