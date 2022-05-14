@@ -39,13 +39,13 @@ fun LoginScreen(navController: NavController, viewModel: LoginScreenViewModel = 
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top) {
             ReaderLogo()
             if (showLoginForm.value) UserForm(loading = false, isCreateAccount = false){email, password ->
-                viewModel.signIn(email, password){
+                viewModel.signInWithEmailAndPassword(email, password){
                     navController.navigate(ReaderScreens.ReaderHomeScreen.name)
                 }
             }
             else{
                 UserForm(loading = false, isCreateAccount = true){email, password ->
-                    viewModel.createUser(email, password){
+                    viewModel.createUserWithEmailAndPassword(email, password){
                         navController.navigate(ReaderScreens.ReaderHomeScreen.name)
                     }
                     
