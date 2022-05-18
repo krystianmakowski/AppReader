@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController = NavController(LocalContext.current
         },
         floatingActionButton = {
             FABContent {
-
+                navController.navigate(ReaderScreens.SearchScreen.name)
             } }
     ) {
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -58,8 +58,7 @@ fun HomeContent(navController: NavController){
         MBook(id = "dsda", title = "Słońce", "Jerzy Kowalski","blah bla"),
         MBook(id = "dsda", title = "Kwiatek", "Jan Adam",notes = null),
         MBook(id = "dsda", title = "Wazon", "Jan Psikuta",notes = null),
-        MBook(id = "dsda", title = "Czajnik", "Radek Kowalski","blah la")
-    )
+        MBook(id = "dsda", title = "Czajnik", "Radek Kowalski","blah la"))
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty())
         FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0)

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
@@ -138,8 +139,10 @@ fun PasswordVisibility(passwordVisibility: MutableState<Boolean>) {
 @Composable
 fun ReaderAppBar(
     title: String,
+    icon: ImageVector? = null,
     showProfile: Boolean = true,
-    navController: NavController
+    navController: NavController,
+    onBackArrowClicked: () -> Unit = {},
 ){
     TopAppBar(
         title = {
@@ -155,11 +158,19 @@ fun ReaderAppBar(
                             .scale(0.9f)
                     )
                 }
+                if (icon != null){
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = "arrow back",
+                        tint = Color.Red.copy(alpha = 0.7f),
+                        modifier = Modifier.clickable { onBackArrowClicked.invoke() }
+                    )
+                }
+                Spacer(modifier = Modifier.width(40.dp))
                 Text(
                     text = title,
                     color = Color.Red.copy(alpha = 0.7f),
                     style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
-                Spacer(modifier = Modifier.width(150.dp))
 
             }
         },
@@ -168,7 +179,9 @@ fun ReaderAppBar(
                 FirebaseAuth.getInstance().signOut().run {
                     navController.navigate(ReaderScreens.LoginScreen.name)
                 } }) {
-                Icon(imageVector = Icons.Filled.Logout, contentDescription = "Logout icon")
+                if (showProfile) Row() {
+                    Icon(imageVector = Icons.Filled.Logout, contentDescription = "Logout icon")
+                }else Box(){}
             }
         },
         backgroundColor = Color.Transparent,
