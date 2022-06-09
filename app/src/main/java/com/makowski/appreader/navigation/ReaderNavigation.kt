@@ -3,9 +3,11 @@ package com.makowski.appreader.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.makowski.appreader.screens.SplashScreen
 import com.makowski.appreader.screens.details.DetailsScreen
 import com.makowski.appreader.screens.home.HomeScreen
@@ -27,8 +29,13 @@ fun ReaderNavigation() {
         composable(ReaderScreens.ReaderHomeScreen.name){
             HomeScreen(navController = navController)
         }
-        composable(ReaderScreens.DetailScreen.name){
-            DetailsScreen(navController = navController, bookId = "")
+        val detailName = ReaderScreens.DetailScreen.name
+        composable("$detailName/{bookId}", arguments = listOf(navArgument("bookId"){
+            type = NavType.StringType
+        })){ backStackEntry ->
+            backStackEntry.arguments?.getString("bookId").let {
+                DetailsScreen(navController = navController, bookId = it.toString())
+            }
         }
         composable(ReaderScreens.LoginScreen.name){
             LoginScreen(navController = navController)
