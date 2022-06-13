@@ -1,8 +1,10 @@
 package com.makowski.appreader.di
 
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.makowski.appreader.network.BooksApi
 import com.makowski.appreader.repository.BookRepository
+import com.makowski.appreader.repository.FireRepository
 import com.makowski.appreader.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -16,9 +18,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+//    @Singleton
+//    @Provides
+//    fun provideBookRepository(api: BooksApi) = BookRepository(api)
     @Singleton
     @Provides
-    fun provideBookRepository(api: BooksApi) = BookRepository(api)
+    fun provideFireBookRepository() = FireRepository(queryBook = FirebaseFirestore.getInstance()
+        .collection("books"))
 
     @Singleton
     @Provides

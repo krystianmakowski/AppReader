@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import com.makowski.appreader.screens.SplashScreen
 import com.makowski.appreader.screens.details.DetailsScreen
 import com.makowski.appreader.screens.home.HomeScreen
+import com.makowski.appreader.screens.home.HomeScreenViewModel
 import com.makowski.appreader.screens.login.LoginScreen
 import com.makowski.appreader.screens.search.BookSearchViewModel
 import com.makowski.appreader.screens.search.SearchScreen
@@ -27,7 +28,8 @@ fun ReaderNavigation() {
             SplashScreen(navController = navController)
         }
         composable(ReaderScreens.ReaderHomeScreen.name){
-            HomeScreen(navController = navController)
+            val homeViewModel = hiltViewModel<HomeScreenViewModel>()
+            HomeScreen(navController = navController, viewModel = homeViewModel)
         }
         val detailName = ReaderScreens.DetailScreen.name
         composable("$detailName/{bookId}", arguments = listOf(navArgument("bookId"){
