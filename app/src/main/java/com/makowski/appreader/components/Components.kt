@@ -228,7 +228,7 @@ fun BookRating(score: Double = 4.5) {
 }
 
 @Composable
-fun ListCard(book: MBook = MBook("123asd","Harry Potter","J.K.Rowlings", "blah blah blah"), onPressDetails: (String) -> Unit = {}) {
+fun ListCard(book: MBook, onPressDetails: (String) -> Unit = {}) {
     val context = LocalContext.current
     val resources = context.resources
     val displayMetrics = resources.displayMetrics
@@ -246,7 +246,7 @@ fun ListCard(book: MBook = MBook("123asd","Harry Potter","J.K.Rowlings", "blah b
         Column(modifier = Modifier.width(screenWidth.dp - (spacing * 2)), horizontalAlignment = Alignment.Start) {
             Row(horizontalArrangement = Arrangement.Center) {
                 Image(
-                    painter = rememberImagePainter(data = ""),
+                    painter = rememberImagePainter(data = book.photoUrl.toString()),
                     contentDescription = "book image",
                     modifier = Modifier
                         .height(140.dp)

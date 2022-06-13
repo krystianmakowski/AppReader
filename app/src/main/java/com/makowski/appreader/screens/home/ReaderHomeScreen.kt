@@ -108,7 +108,9 @@ fun HomeContent(navController: NavController, viewModel: HomeScreenViewModel){
 
 @Composable
 fun BookListArea(listOfBooks: List<MBook>, navController: NavController) {
-    HorizontalScrollableComponent(listOfBooks){}
+    HorizontalScrollableComponent(listOfBooks){
+        navController.navigate(ReaderScreens.UpdateScreen.name + "/$it")
+    }
 }
 
 @Composable
@@ -120,7 +122,7 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>, onCardPressed: (Stri
         .horizontalScroll(scrollState)) {
         for (book in listOfBooks){
             ListCard(book){
-                onCardPressed(it)
+                onCardPressed(book.googleBookId.toString())
             }
         }
     }
@@ -129,7 +131,7 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>, onCardPressed: (Stri
 
 @Composable
 fun ReadingRightNowArea(books: List<MBook>, navController: NavController){
-    ListCard()
+    //ListCard()
 }
 
 
