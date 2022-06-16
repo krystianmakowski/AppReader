@@ -66,12 +66,7 @@ fun HomeContent(navController: NavController, viewModel: HomeScreenViewModel){
         }
         Log.d("Books", "HomeContent: ${listOfBooks.toString()}")
     }
-//    val listOfBooks = listOf(
-//        MBook(id = "dsda", title = "Wióry", "Jan Kowalski","blah blah bla"),
-//        MBook(id = "dsda", title = "Słońce", "Jerzy Kowalski","blah bla"),
-//        MBook(id = "dsda", title = "Kwiatek", "Jan Adam",notes = null),
-//        MBook(id = "dsda", title = "Wazon", "Jan Psikuta",notes = null),
-//        MBook(id = "dsda", title = "Czajnik", "Radek Kowalski","blah la"))
+
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty())
         FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0)
@@ -131,7 +126,7 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>, onCardPressed: (Stri
 
 @Composable
 fun ReadingRightNowArea(books: List<MBook>, navController: NavController){
-    //ListCard()
+
 }
 
 
